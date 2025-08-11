@@ -4,9 +4,17 @@
 
 .globl entrypoint
 entrypoint:
-  lddw r1, message
-  lddw r2, 14
+  ldxdw r3, [r1+MINIMUM_BALANCE]
+  ldxdw r4, [r1+TOKEN_ACCOUNT_BALANCE]
+  jge r3, r4, end
+
+  lddw r1, e
+  lddw r2, 17
   call sol_log_
+  lddw r0, 1
+
+end:
   exit
+
 .rodata
-  message: .ascii "Hello, Solana!"
+  e: .ascii "Slippage exceeded"
