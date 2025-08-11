@@ -1,12 +1,18 @@
 .equ TOKEN_ACCOUNT_BALANCE, 0x00a0
-.equ BALANCE_OFFSET, 160
-.equ MINIMUM_BALANCE, 0x2918
+.equ TOKEN_ACCOUNT_DATA_LEN, 0x0058
+.equ MINIMUM_BALANCE, 0x2910
 
 .globl entrypoint
 entrypoint:
+
   ldxdw r3, [r1+MINIMUM_BALANCE]
+  ldxdw r5, [r1+TOKEN_ACCOUNT_DATA_LEN]
+  add64 r3, r5
   ldxdw r4, [r1+TOKEN_ACCOUNT_BALANCE]
-  jge r3, r4, end
+  
+
+  
+  jge r4, r3, end
 
   lddw r1, e
   lddw r2, 17
