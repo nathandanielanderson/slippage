@@ -1,3 +1,7 @@
+.equ TOKEN_ACCOUNT_BALANCE, 0x00a0
+.equ BALANCE_OFFSET, 160
+.equ MINIMUM_BALANCE, 0x2918
+
 .globl entrypoint
 entrypoint:
   lddw r1, message
